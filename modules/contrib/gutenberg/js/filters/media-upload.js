@@ -107,7 +107,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
       key: 'render',
       value: function render() {
         var render = this.props.render;
-
+        console.log('props', this)
         return render({ open: this.openModal });
       }
     }]);
