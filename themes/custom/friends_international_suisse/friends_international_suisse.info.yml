@@ -1,0 +1,17 @@
+name: fis
+type: theme
+description: 'Main theme for Friends International Suisse website'
+package: Other
+core: 8.x
+libraries:
+  - friends_international_suisse/fis
+ 
+base theme: stable
+
+regions:
+  content: content
+  header: header
+  footer: footer
+  footer_first_column: footer first column
+  footer_second_column: footer second column
+  footer_third_column: footer third column

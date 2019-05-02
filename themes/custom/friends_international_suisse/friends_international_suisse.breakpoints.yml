@@ -1,0 +1,24 @@
+friends_international_suisse.xs:
+  label: xs
+  mediaQuery: '(max-width:767px)'
+  weight: '1'
+  multipliers:
+    - '1x'
+friends_international_suisse.sm:
+  label: sm
+  mediaQuery: '(min-width:767px)'
+  weight: '1'
+  multipliers:
+    - '1x'
+friends_international_suisse.md:
+  label: md
+  mediaQuery: '(min-width:991px)'
+  weight: '1'
+  multipliers:
+    - '1x'
+friends_international_suisse.lg:
+  label: lg
+  mediaQuery: '(min-width:1200px)'
+  weight: '1'
+  multipliers:
+    - '1x'
