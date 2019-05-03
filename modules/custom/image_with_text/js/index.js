@@ -24,7 +24,9 @@ var PanelBody = components.PanelBody,
   RangeControl = components.RangeControl,
   IconButton = components.IconButton,
   Toolbar = components.Toolbar,
-  SelectControl = components.SelectControl;
+  SelectControl = components.SelectControl,
+  ToggleControl = components.ToggleControl,
+  TextControl = components.TextControl;
 var InnerBlocks = editor.InnerBlocks,
   RichText = editor.RichText,
   InspectorControls = editor.InspectorControls,
@@ -33,9 +35,20 @@ var InnerBlocks = editor.InnerBlocks,
   BlockControls = editor.BlockControls;
 var __ = Drupal.t;
 var settings = {
-  title: __('Gutenberg Example Block'),
-  description: __('Gutenberg Example Block'),
+  title: __('FIS Cover image with title'),
+  description: __('A full width image with a text box overlayed'),
   attributes: {
+    color: {
+      type: 'string',
+      default: '#FFFFFF'
+    },
+    backgroundColor: {
+      type: 'string',
+      default: '#005E9D'
+    },
+    withPadding: {
+      type: 'boolean'
+    },
     title: {
       type: 'string'
     },
@@ -45,8 +58,11 @@ var settings = {
     imgUrls: {
       type: 'object',
       default: {
+        small: {
+          source_url: 'http://placehold.it/800'
+        },
         large: {
-          source_url: 'http://placehold.it'
+          source_url: 'http://placehold.it/1600'
         }
       }
     }
@@ -59,18 +75,37 @@ var settings = {
     var title = attributes.title,
       subtitle = attributes.subtitle,
       imgUrls = attributes.imgUrls;
-    console.log('editAttributes', attributes);
-    var large = imgUrls.large;
-    return React.createElement(Fragment, null, React.createElement("div", {
-      className: className
-    }, React.createElement("div", {
-      className: "column"
-    }, React.createElement("div", {
-      class: "cover-image",
-      style: {
-        backgroundImage: "url('".concat(large.source_url, "')")
+    var backgroundColor = attributes.backgroundColor,
+      color = attributes.color,
+      withPadding = attributes.withPadding;
+    var small = imgUrls.small,
+      large = imgUrls.large;
+    var style = {
+      backgroundColor: backgroundColor,
+      color: color
+    };
+    var image = React.createElement(MediaUpload, {
+      identifier: "imgUrls",
+      render: function render(_ref2) {
+        var open = _ref2.open;
+        var _attributes$imgUrls = attributes.imgUrls,
+          small = _attributes$imgUrls.small,
+          large = _attributes$imgUrls.large;
+        return React.createElement("div", null, isSelected ? React.createElement("div", {
+          className: "cover-selector",
+          onClick: open
+        }, "Select Image") : '');
+      },
+      onSelect: function onSelect(nextValue) {
+        var sizes = nextValue.media_details.sizes;
+        setAttributes({
+          imgUrls: sizes
+        });
       }
-    }), React.createElement(RichText, {
+    });
+    var title_ = React.createElement("div", {
+      className: "title"
+    }, React.createElement(RichText, {
       identifier: "title",
       tagName: "h2",
       value: title,
@@ -86,7 +121,8 @@ var settings = {
       unstableOnSplit: function unstableOnSplit() {
         return null;
       }
-    }), React.createElement(RichText, {
+    }));
+    var subtitle_ = React.createElement(RichText, {
       identifier: "subtitle",
       tagName: "p",
       value: subtitle,
@@ -96,49 +132,108 @@ var settings = {
           text: nextText
         });
       }
-    }), React.createElement(MediaUpload, {
-      identifier: "imgUrls",
-      render: function render(_ref2) {
-        var open = _ref2.open;
-        console.log('attributes', attributes);
-        var large = attributes.imgUrls.large;
-        return React.createElement("div", null, React.createElement("div", {
-          className: "cover-image",
-          style: {
-            backgroundImage: "url('".concat(large.source_url, "')")
-          }
-        }), isSelected ? React.createElement("div", {
-          onClick: open
-        }, "Select Image") : '');
-      },
-      onSelect: function onSelect(nextValue) {
-        console.log(nextValue);
-        var sizes = nextValue.media_details.sizes;
+    });
+    return React.createElement(Fragment, null, React.createElement("div", {
+      className: className
+    }, React.createElement("div", {
+      className: "cover-container",
+      style: style
+    }, large && React.createElement("div", {
+      class: "cover-image",
+      style: {
+        backgroundImage: "url('".concat(large.source_url, "')")
+      }
+    }), small && React.createElement("div", {
+      class: "cover-image",
+      style: {
+        backgroundImage: "url('".concat(small.source_url, "')")
+      }
+    }), image, withPadding && React.createElement("div", {
+      className: "text-container padder"
+    }, title_), !withPadding && React.createElement("div", {
+      className: "text-container padder"
+    }, title_, subtitle_)), withPadding && React.createElement("div", {
+      className: "text-container",
+      style: style
+    }, React.createElement("div", {
+      className: "subtitle"
+    }, "subtitle_"))), React.createElement(InspectorControls, null, React.createElement(PanelBody, {
+      title: __('Block Settings')
+    }, React.createElement("div", null, title), React.createElement("label", null, "Text Color"), React.createElement(TextControl, {
+      identifier: "color",
+      tagName: "p",
+      value: color,
+      placeholder: __('#FFFFFF'),
+      onChange: function onChange(nextColor) {
         setAttributes({
-          imgUrls: sizes
+          color: nextColor
         });
       }
-    }))), React.createElement(InspectorControls, null, React.createElement(PanelBody, {
-      title: __('Block Settaings')
-    }, React.createElement("div", null, title))));
+    }), React.createElement("label", null, "Background Color"), React.createElement(TextControl, {
+      identifier: "backgroundColor",
+      tagName: "p",
+      value: backgroundColor,
+      placeholder: __('#FF00FF'),
+      onChange: function onChange(nextColor) {
+        setAttributes({
+          backgroundColor: nextColor
+        });
+      }
+    }), React.createElement(ToggleControl, {
+      label: "Text box position",
+      help: !withPadding ? 'Text box over image.' : 'Text box overlaps.',
+      checked: withPadding,
+      onChange: function onChange(withPadding) {
+        setAttributes({
+          withPadding: withPadding
+        });
+      }
+    }))));
   },
   save: function save(_ref3) {
     var className = _ref3.className,
       attributes = _ref3.attributes;
     var title = attributes.title,
       subtitle = attributes.subtitle,
-      text = attributes.text,
       imgUrls = attributes.imgUrls;
-    var large = imgUrls.large;
-    console.log(attributes);
+    var backgroundColor = attributes.backgroundColor,
+      color = attributes.color,
+      withPadding = attributes.withPadding;
+    var small = imgUrls.small,
+      large = imgUrls.large;
+    var title_ = title && React.createElement("h2", {
+      className: "title"
+    }, title);
+    var subtitle_ = subtitle && React.createElement("div", {
+      className: "subtitle"
+    }, subtitle);
+    var style = {
+      backgroundColor: backgroundColor,
+      color: color
+    };
     return React.createElement("div", {
       className: className
     }, React.createElement("div", {
-      class: "cover-image",
+      style: style,
+      className: "cover-container"
+    }, small && React.createElement("div", {
+      class: " hidden-sm cover-image",
+      style: {
+        backgroundImage: "url(".concat(small.source_url, ")")
+      }
+    }), large && React.createElement("div", {
+      class: " hidden-xs cover-image",
       style: {
         backgroundImage: "url(".concat(large.source_url, ")")
       }
-    }), title && React.createElement("h2", null, title), subtitle && React.createElement("div", null, subtitle), text && React.createElement("p", null, text));
+    }), withPadding && React.createElement("div", {
+      className: "text-container padder"
+    }, title_), !withPadding && React.createElement("div", {
+      className: "text-container padder"
+    }, title_, subtitle_)), withPadding && React.createElement("div", {
+      className: "text-container",
+      style: style
+    }, "subtitle_"));
   }
 };
 var category = {

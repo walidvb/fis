@@ -1,22 +1,35 @@
-/**
- * Don't edit this file. Find all style at ./sass folder.
- **/
-.wp-block-example-example-block {
-  display: flex;
-  flex-direction: row;
+.wp-block-fis-custom-image-with-text {
+  display: inline-block;
+  width: 100%;
 }
 
-.wp-block-example-example-block .column {
-  flex: 1;
+.wp-block-fis-custom-image-with-text .cover-container{
+  display: inline-block;
+  position: relative;
+  width: 100%;
 }
 
-.wp-block-example-example-block .icon {
-  text-align: center;
+.wp-block-fis-custom-image-with-text .cover-image{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
-.wp-block-example-example-block .icon svg {
-  width: 120px;
-  height: 120px;
+
+.wp-block-fis-custom-image-with-text .text-container, .wp-block-fis-custom-image-with-text .subtitle{
+  padding: 1rem .5rem;
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: inherit;
+  color: inherit;
+  position: relative;
 }
 
-/*# sourceMappingURL=style.css.map */
+.wp-block-fis-custom-image-with-text .padder{
+  margin-top: 30vh;
+}
