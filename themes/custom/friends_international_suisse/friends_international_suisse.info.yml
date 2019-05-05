@@ -4,14 +4,16 @@ description: 'Main theme for Friends International Suisse website'
 package: Other
 core: 8.x
 libraries:
-  - friends_international_suisse/fis
+  - friends_international_suisse/global-styling
  
-base theme: stable
+base theme: classy
 
 regions:
+  header_first_column: header first column
+  header_second_column: header second column
+  header_third_column: header third column
+  navigation: navigation
   content: content
-  header: header
-  footer: footer
   footer_first_column: footer first column
   footer_second_column: footer second column
   footer_third_column: footer third column
