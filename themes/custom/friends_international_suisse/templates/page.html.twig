@@ -45,7 +45,7 @@
 <div class="layout-container">
 
   <header role="banner">
-    <div class="columns columns-3">
+    <div class="flex justify-between">
       {{ page.header_first_column }}
       {{ page.header_second_column }}
       {{ page.header_third_column }}
@@ -84,12 +84,10 @@
 
   </main>
 
-  {% if page.footer %}
-    <footer class="columns columns-3" role="contentinfo">
-      {{ page.footer_first_column }}
-      {{ page.footer_second_column }}
-      {{ page.footer_third_column }}
-    </footer>
-  {% endif %}
+  <footer class="flex justify-between" role="contentinfo">
+    {{ page.footer_first_column }}
+    {{ page.footer_second_column }}
+    {{ page.footer_third_column }}
+  </footer>
 
 </div>{# /.layout-container #}
