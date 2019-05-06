@@ -10,12 +10,12 @@ const __ = Drupal.t;
 function render({ className, attributes }){
   const { title, subtitle, image } = attributes;
   const { backgroundColor, color, withPadding } = attributes;
-
-  const title_ = title && (<h2 className="title">{title}</h2>);
+  const title_ = title && (<div className="title">{title}</div>);
   const subtitle_ = subtitle && (<div className="subtitle" >{subtitle}</div>);
   const style = { backgroundColor, color };
+  console.log(className)
   return (
-    <div className={className} >
+    <div className={className}>
       <div style={style} className="cover-container">
         {image}
         {withPadding && <div className="text-container padder">
@@ -56,8 +56,8 @@ const settings = {
     imgUrls: {
       type: 'object',
       default: {
-        small: { source_url: 'http://placehold.it/800' },
-        large: { source_url: 'http://placehold.it/1600' },
+        full_width_mobile: { source_url: 'http://placehold.it/800' },
+        full_width: { source_url: 'http://placehold.it/1600' },
       }
     },
   },
@@ -68,10 +68,10 @@ const settings = {
     const image = (<MediaUpload
       identifier="imgUrls"
       render={({ open }) => {
-        const { small, large } = attributes.imgUrls;
+        const { full_width_mobile, full_width } = imgUrls;
         return <div>
-          {large && <div class="cover-image" style={{ backgroundImage: `url('${large.source_url}')` }}></div>}
-          {small && <div class="cover-image" style={{ backgroundImage: `url('${small.source_url}')` }}></div>}
+          {full_width && <div class="cover-image" style={{ backgroundImage: `url('${full_width.source_url}')` }}></div>}
+          {full_width_mobile && <div class="cover-image" style={{ backgroundImage: `url('${full_width_mobile.source_url}')` }}></div>}
           {isSelected ? <div className="cover-selector" onClick={open}>Select Image</div> : ''}
         </div>
       }}
@@ -86,7 +86,7 @@ const settings = {
     const title_ = (<div className="title">
     <RichText
       identifier="title"
-      tagName="h2"
+      tagName="div"
       value={title}
       placeholder={__('Title')}
       onChange={nextTitle => {
@@ -162,9 +162,9 @@ const settings = {
   },
 
   save({ className, attributes }) {
-    const { small, large } = attributes.imgUrls;
-    const image = <div>{small && <div class=" hidden-sm cover-image" style={{ backgroundImage: `url(${small.source_url})` }} />}
-      {large && <div class=" hidden-xs cover-image" style={{ backgroundImage: `url(${large.source_url})` }} />}</div>
+    const { full_width_mobile, full_width } = attributes.imgUrls;
+    const image = <div>{full_width_mobile && <div class=" hidden-sm cover-image" style={{ backgroundImage: `url(${full_width_mobile.source_url})` }} />}
+      {full_width && <div class=" hidden-xs cover-image" style={{ backgroundImage: `url(${full_width.source_url})` }} />}</div>
     return render({ className, attributes: {
       ...attributes, 
       image: image,

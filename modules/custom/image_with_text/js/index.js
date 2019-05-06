@@ -44,7 +44,7 @@ function render(_ref) {
   var backgroundColor = attributes.backgroundColor,
     color = attributes.color,
     withPadding = attributes.withPadding;
-  var title_ = title && React.createElement("h2", {
+  var title_ = title && React.createElement("div", {
     className: "title"
   }, title);
   var subtitle_ = subtitle && React.createElement("div", {
@@ -54,6 +54,7 @@ function render(_ref) {
     backgroundColor: backgroundColor,
     color: color
   };
+  console.log(className, color, backgroundColor, image);
   return React.createElement("div", {
     className: className
   }, React.createElement("div", {
@@ -93,10 +94,10 @@ var settings = {
     imgUrls: {
       type: 'object',
       default: {
-        small: {
+        full_width_mobile: {
           source_url: 'http://placehold.it/800'
         },
-        large: {
+        full_width: {
           source_url: 'http://placehold.it/1600'
         }
       }
@@ -117,18 +118,17 @@ var settings = {
       identifier: "imgUrls",
       render: function render(_ref3) {
         var open = _ref3.open;
-        var _attributes$imgUrls = attributes.imgUrls,
-          small = _attributes$imgUrls.small,
-          large = _attributes$imgUrls.large;
-        return React.createElement("div", null, large && React.createElement("div", {
+        var full_width_mobile = imgUrls.full_width_mobile,
+          full_width = imgUrls.full_width;
+        return React.createElement("div", null, full_width && React.createElement("div", {
           class: "cover-image",
           style: {
-            backgroundImage: "url('".concat(large.source_url, "')")
+            backgroundImage: "url('".concat(full_width.source_url, "')")
           }
-        }), small && React.createElement("div", {
+        }), full_width_mobile && React.createElement("div", {
           class: "cover-image",
           style: {
-            backgroundImage: "url('".concat(small.source_url, "')")
+            backgroundImage: "url('".concat(full_width_mobile.source_url, "')")
           }
         }), isSelected ? React.createElement("div", {
           className: "cover-selector",
@@ -146,7 +146,7 @@ var settings = {
       className: "title"
     }, React.createElement(RichText, {
       identifier: "title",
-      tagName: "h2",
+      tagName: "div",
       value: title,
       placeholder: __('Title'),
       onChange: function onChange(nextTitle) {
@@ -219,18 +219,18 @@ var settings = {
   save: function save(_ref4) {
     var className = _ref4.className,
       attributes = _ref4.attributes;
-    var _attributes$imgUrls2 = attributes.imgUrls,
-      small = _attributes$imgUrls2.small,
-      large = _attributes$imgUrls2.large;
-    var image = React.createElement("div", null, small && React.createElement("div", {
+    var _attributes$imgUrls = attributes.imgUrls,
+      full_width_mobile = _attributes$imgUrls.full_width_mobile,
+      full_width = _attributes$imgUrls.full_width;
+    var image = React.createElement("div", null, full_width_mobile && React.createElement("div", {
       class: " hidden-sm cover-image",
       style: {
-        backgroundImage: "url(".concat(small.source_url, ")")
+        backgroundImage: "url(".concat(full_width_mobile.source_url, ")")
       }
-    }), large && React.createElement("div", {
+    }), full_width && React.createElement("div", {
       class: " hidden-xs cover-image",
       style: {
-        backgroundImage: "url(".concat(large.source_url, ")")
+        backgroundImage: "url(".concat(full_width.source_url, ")")
       }
     }));
     return render({
