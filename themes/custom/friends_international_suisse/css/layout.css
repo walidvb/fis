@@ -1,2 +1,8 @@
-body{
+main{
+  text-align: center;
+}
+
+header, footer{
+  background-color: var(--dark-blue);
+  padding: 1rem 5rem;
 }

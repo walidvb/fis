@@ -1,0 +1,38 @@
+.site-logo{
+  max-width: 250px;
+  display: inline-block;
+}
+
+.social-media-links--platforms li{
+  margin: 0 1rem;
+  font-size: .7rem;
+}
+.fa{
+  color: white;
+}
+
+header{
+  padding-bottom: 0;
+}
+
+#block-friends-international-suisse-main-menu{
+  padding-left: calc(50% - var(--content-width));
+  padding-right: calc(50% - var(--content-width));
+}
+
+#block-friends-international-suisse-main-menu .menu{
+  display: flex;
+  justify-content: space-between;
+}
+
+#block-friends-international-suisse-main-menu a{
+  background-color: var(--yellow);
+  padding: 5px 10px;
+  display: inline-block;
+  transform: translateY(50%);
+  text-decoration: none;
+  position: relative;
+  font-weight: bold;
+  z-index: 5;
+  color: var(--dark-blue);
+}

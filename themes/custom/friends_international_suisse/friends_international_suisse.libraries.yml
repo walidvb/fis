@@ -2,6 +2,11 @@ global-styling:
   version: 1.x
   css:
     theme:
+      css/drupal-reset.css: {}
       css/base.css: {}
       css/tailwind.css: {}
       css/layout.css: {}
+      css/header.css: {}
+      css/footer.css: {}
+      css/theme.css: {}
+      css/hacks.css: {}

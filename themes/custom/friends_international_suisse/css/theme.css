@@ -1,0 +1,50 @@
+.node-readmore a{
+  color: white;
+  background-color: var(--red);
+  padding: 5px 10px;
+  color: white;
+  display: inline-block
+}
+.node-readmore a:after{
+  content: '>';
+  border-left: 2px solid var(--light-grey);
+  height: 100%;
+  display: inline-block;
+  margin-left: 5px;
+  padding-left: 5px;
+}
+
+
+.view-articles .node__content > div .field{
+  margin-bottom: 1rem;
+}
+
+.view-articles a{
+  text-decoration: none;
+}
+.view-articles{
+  text-align: left;
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+}
+.view-articles .view-content{
+  padding: 2rem;
+  background-color: var(--light-grey);
+}
+.view-articles .node__content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    padding: 2rem 0;
+}
+
+.view-articles .views-row:not(:last-child) .node__content{
+    border-bottom: 1px solid grey;
+}
+.view-articles  .views-row:nth-child(odd) .node__content > *, .view-articles .node__content .field--name-field-image{
+  grid-column: 1 / 1;
+}
+.view-articles  .views-row:nth-child(odd) .field--name-field-image, .view-articles .node__content > *{
+  grid-column: 2 / 2;
+  grid-row: 1;
+}

@@ -1,0 +1,42 @@
+:root{
+  --blue: #005E9D;
+  --dark-blue: #083350;
+  --light-blue: #E1ECF3;
+  --yellow: #ead40b;
+  --red: #AA1144;
+  --light-grey: #F0F1F2;
+  
+  --content-width: 475px;
+
+  --padding: calc(50% - var(--content-width));
+}
+
+html{
+  color: var(--dark-blue);
+}
+
+img, iframe{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.bg-brand{
+  background-color: var(--dark-blue);
+  color: white;
+}
+
+.bg-light-blue{
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+}
+
+a, a:hover, a:focus, a:visited{
+  color: var(--dark-blue);
+}
+p a{
+  text-decoration: underline;
+}
+p a:hover{
+  text-decoration: none;
+}
