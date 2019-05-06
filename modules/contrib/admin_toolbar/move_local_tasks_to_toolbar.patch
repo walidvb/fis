@@ -1,0 +1,111 @@
+diff --git a/admin_toolbar_tools/admin_toolbar_tools.module b/admin_toolbar_tools/admin_toolbar_tools.module
+index 45644ff..bb70b5e 100644
+--- a/admin_toolbar_tools/admin_toolbar_tools.module
++++ b/admin_toolbar_tools/admin_toolbar_tools.module
+@@ -25,6 +25,40 @@ function admin_toolbar_tools_toolbar() {
+     '#attached' => ['library' => ['admin_toolbar_tools/toolbar.icon']],
+   ];
+ 
++  // Toolbar item for primary local tasks.
++  // @todo - do we need some configuration to turn this on/off?
++  $items['admin_toolbar_local_tasks'] = [
++    '#type' => 'toolbar_item',
++    '#wrapper_attributes' => [
++      'class' => ['local-tasks-toolbar-tab'],
++    ],
++    // Put it after contextual toolbar item so when float right is applied
++    // local tasks item will be first.
++    '#weight' => 10,
++    'tab' => [
++      // We can't use #lazy_builder here because
++      // ToolbarItem::preRenderToolbarItem will insert #attributes before
++      // lazy_builder callback and this will produce Exception.
++      // This means that for now we always render Local Tasks item even when
++      // the tray is empty.
++      '#type' => 'link',
++      '#title' => t('Local Tasks'),
++      '#url' => Url::fromRoute('<none>'),
++      '#attributes' => [
++        'class' => [
++          'toolbar-icon',
++          'toolbar-icon-local-tasks',
++        ],
++      ],
++    ],
++    'tray' => [
++      'local_links' => [
++        '#lazy_builder' => ['admin_toolbar_tools.toolbar_handler:localTasksTrayLazyBuilder', []],
++      ],
++    ],
++    '#attached' => ['library' => ['admin_toolbar_tools/toolbar.icon']],
++  ];
++
+   return $items;
+ }
+ 
+diff --git a/admin_toolbar_tools/css/tools.css b/admin_toolbar_tools/css/tools.css
+index a40a8a4..23cd869 100644
+--- a/admin_toolbar_tools/css/tools.css
++++ b/admin_toolbar_tools/css/tools.css
+@@ -14,3 +14,15 @@
+ .toolbar-icon-admin-toolbar-tools-help.active:before {
+   background-image: url(../misc/icons/ffffff/d8-item.svg);
+ }
++
++.toolbar-oriented .toolbar-bar .local-tasks-toolbar-tab {
++  float: right;
++}
++
++.toolbar-horizontal .local-tasks-toolbar-tab .toolbar-menu {
++  float: right;
++}
++
++.toolbar-bar .toolbar-icon-local-tasks:before {
++  background-image: url(../misc/icons/bebebe/tasks.svg);
++}
+diff --git a/admin_toolbar_tools/misc/icons/bebebe/tasks.svg b/admin_toolbar_tools/misc/icons/bebebe/tasks.svg
+new file mode 100644
+index 0000000..7b47a81
+--- /dev/null
++++ b/admin_toolbar_tools/misc/icons/bebebe/tasks.svg
+@@ -0,0 +1,4 @@
++<svg fill="#bebebe" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
++    <path d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/>
++    <path d="M0 0h24v24H0V0z" fill="none"/>
++</svg>
+\ No newline at end of file
+diff --git a/admin_toolbar_tools/src/ToolbarHandler.php b/admin_toolbar_tools/src/ToolbarHandler.php
+index c46c704..53520e9 100644
+--- a/admin_toolbar_tools/src/ToolbarHandler.php
++++ b/admin_toolbar_tools/src/ToolbarHandler.php
+@@ -84,6 +84,30 @@ class ToolbarHandler implements ContainerInjectionInterface {
+   }
+ 
+   /**
++   * Lazy builder callback for the admin_toolbar_local_tasks tray items.
++   *
++   * @return array
++   *   A renderable array as expected by the renderer service.
++   */
++  public function localTasksTrayLazyBuilder() {
++    // Get primary local task links and inject them into new
++    // admin_toolbar_local_tasks toolbar tray.
++    $manager = \Drupal::service('plugin.manager.menu.local_task');
++    $links = $manager->getLocalTasks(\Drupal::routeMatch()->getRouteName(), 0);
++    if (!empty($links)) {
++      $build['#theme'] = 'links';
++      $build['#attributes'] = ['class' => ['toolbar-menu']];
++      foreach ($links['tabs'] as $route => $link) {
++        $build['#links'][$route] = $link['#link'];
++      }
++
++      return $build;
++    }
++
++    return [];
++  }
++
++  /**
+    * Create the menu render array.
+    *
+    * @param string $route
