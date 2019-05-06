@@ -1,0 +1,19 @@
+.wp-block-fis-custom-title-with-paragraph >div{
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.wp-block-fis-custom-title-with-paragraph.full-width > div{
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+}
+
+.wp-block-fis-custom-title-with-paragraph.box-centered{
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+}
+
+.wp-block-fis-custom-title-with-paragraph h2{
+  margin-bottom: 1rem;
+}

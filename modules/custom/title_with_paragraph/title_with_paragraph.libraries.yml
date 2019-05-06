@@ -1,0 +1,15 @@
+block-edit:
+  version: VERSION
+  js:
+    js/index.js: { }
+  css:
+    theme:
+      css/style.css: { }
+      css/edit.css: { }
+  dependencies:
+    - gutenberg/editor
+block-view:
+  version: VERSION
+  css:
+    theme:
+      css/style.css: { }

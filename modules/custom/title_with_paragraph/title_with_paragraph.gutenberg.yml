@@ -1,0 +1,6 @@
+# Libraries to be injected on editor (node edit)
+libraries-edit:
+  - title_with_paragraph/block-edit
+# Libraries to be injected on node view
+libraries-view:
+  - title_with_paragraph/block-view
