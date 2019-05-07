@@ -1,0 +1,79 @@
+.team-title, .view-team{
+  background-color: var(--blue);
+  color: white;
+}
+
+
+.view-team{
+  text-align: left;
+}
+.team-highlights{
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  
+}
+.team-highlights .view-content{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 4rem; 
+}
+
+.team-highlights .views-field-field-profile-picture{
+  max-width: 60%;
+  margin-bottom: 1rem;
+}
+.team-highlights .views-field-field-position{
+  margin-bottom: 1rem;
+}
+.team-highlights h3, .team-highlights .views-field-field-position{
+  background-color: var(--yellow);
+  display: inline-block;
+  color: white;
+  padding: 0 10px;
+  transform: translateX(-10px);
+}
+.team-highlights .views-field-body{
+  text-align: justify;
+}
+
+.team-names-only .views-row{
+  position: relative;
+}
+
+[data-nid]{
+  display: none;
+}
+.team-names-only .views-row{
+  position: relative;
+}
+.team-names-only .views-row:after{
+  content: '+';
+  color: var(--red);
+  border: solid 1px var(--red);
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  line-height: 0.9rem;
+  text-align: center;
+  margin-left: 0.5rem;
+}
+.team-names-only .views-row.active:after {
+    content: '';
+    width: 100%;
+    height: 0;
+    border-radius: 0;
+    position: absolute;
+    top: 0.6rem;
+    border: none;
+    border-bottom: 1px solid var(--red);
+}
+
+.team-bios .views-row{
+  display: none;
+}
+.team-bios .views-row.active{
+  display: inline-block;
+  border: solid 1px var(--red);
+  padding: 1rem;
+}

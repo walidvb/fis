@@ -1,0 +1,14 @@
+.view-annual-reports{
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+    background: var(--light-blue);
+}
+.view-annual-reports .view-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    justify-items: center;
+}
+.view-annual-reports .views-row{
+    max-width: 200px;
+}

@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'NeuzeitGroLig';
+    src: url('fonts/NeuzeitGro-Lig.woff2') format('woff2'),
+        url('fonts/NeuzeitGro-Lig.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeuzeitGro';
+    src: url('fonts/NeuzeitGro-Reg.woff2') format('woff2'),
+        url('fonts/NeuzeitGro-Reg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeuzeitGroBla';
+    src: url('fonts/NeuzeitGro-Bla.woff2') format('woff2'),
+        url('fonts/NeuzeitGro-Bla.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeuzeitGroConBla';
+    src: url('fonts/NeuzeitGroCon-Bla.woff2') format('woff2'),
+        url('fonts/NeuzeitGroCon-Bla.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeuzeitGro';
+    src: url('fonts/NeuzeitGro-Bol.woff2') format('woff2'),
+        url('fonts/NeuzeitGro-Bol.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeuzeitGroExtBla';
+    src: url('fonts/NeuzeitGroExt-Bla.woff2') format('woff2'),
+        url('fonts/NeuzeitGroExt-Bla.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
