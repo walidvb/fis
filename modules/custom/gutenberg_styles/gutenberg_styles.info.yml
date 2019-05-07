@@ -1,0 +1,9 @@
+name: 'Gutenberg Styles'
+type: module
+description: 'Load theme styles in gutenberg'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - gutenberg
+libraries:
+  - friends_international_suisse/global-styling

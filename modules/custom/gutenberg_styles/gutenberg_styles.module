@@ -1,0 +1,17 @@
+<?php
+use Drupal\Core\Form\FormStateInterface;
+
+function gutenberg_styles_form_node_form_alter(&$form, FormStateInterface $form_state) {
+  $config = \Drupal::service('config.factory')->getEditable('gutenberg.settings');
+  $node = $form_state->getFormObject()->getEntity();
+  $node_type = $node->type->getString();
+
+  $gutenberg_enabled = $config->get($node_type . '_enable_full');
+
+  // Leave early if Gutenberg not enabled.
+  if (!$gutenberg_enabled) {
+    return;
+  }
+
+  $form['#attached']['library'][] = 'friends_international_suisse/global-styling';
+}
