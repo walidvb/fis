@@ -11,8 +11,21 @@
   --padding: calc(50% - var(--content-width));
 }
 
+
+.has-light-blue-background{
+  background-color: var(--light-blue);
+}
+.has-blue-background, .bg-blue{
+  background-color: var(--blue);
+}
+
+
 html{
-  color: var(--dark-blue);
+  color: var(--blue);
+}
+body{
+  line-height: 1.42;
+  font-family: 'NeuzeitGro', Helvetica, sans-serif;
 }
 
 img, iframe{

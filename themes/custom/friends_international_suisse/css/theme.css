@@ -15,6 +15,20 @@
 }
 
 
+.cover-image.stand-alone{
+  width: 100%;
+  min-height: 40vh;
+  position: relative;
+  background-size: cover;
+}
+
+.field--name-body > p{
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+}
+
+
+/* projects */ 
 .view-articles .node__content > div .field{
   margin-bottom: 1rem;
 }

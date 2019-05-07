@@ -1,3 +1,11 @@
 .gutenberg__editor{
     background: white;
 }
+
+
+[lang="fr"] .hide-fr{
+    display: none!important
+}
+[lang="en"] .hide-en{
+    display: none!important
+}

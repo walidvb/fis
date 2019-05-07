@@ -1,6 +1,7 @@
 .wp-block-fis-custom-image-with-text {
   display: inline-block;
   width: 100%;
+  text-align: center;
 }
 
 .wp-block-fis-custom-image-with-text .cover-container{
@@ -21,8 +22,8 @@
 
 
 .wp-block-fis-custom-image-with-text .text-container, .wp-block-fis-custom-image-with-text .subtitle{
-  padding: 1rem .5rem;
-  max-width: 70ch;
+  padding: 1rem 3rem;
+  max-width: calc(2 * var(--content-width));
   margin-left: auto;
   margin-right: auto;
   background-color: inherit;

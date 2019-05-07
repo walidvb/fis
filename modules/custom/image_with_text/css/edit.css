@@ -4,6 +4,7 @@
 
 .wp-block-fis-custom-image-with-text .padder{
   margin-top: 5rem;
+  max-width: 70ch;
 }
 
 .wp-block-fis-custom-image-with-text .cover-selector{

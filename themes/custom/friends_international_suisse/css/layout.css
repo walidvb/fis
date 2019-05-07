@@ -6,3 +6,8 @@ header, footer{
   background-color: var(--dark-blue);
   padding: 1rem 5rem;
 }
+
+.wp-block-columns{
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+}
