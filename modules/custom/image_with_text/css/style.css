@@ -22,8 +22,6 @@
 
 
 .wp-block-fis-custom-image-with-text .text-container, .wp-block-fis-custom-image-with-text .subtitle{
-  padding: 1rem 3rem;
-  max-width: calc(2 * var(--content-width));
   margin-left: auto;
   margin-right: auto;
   background-color: inherit;
@@ -31,6 +29,20 @@
   position: relative;
 }
 
+@media (min-width: 767px){
+  .wp-block-fis-custom-image-with-text .text-container, .wp-block-fis-custom-image-with-text .subtitle{
+    padding: 0 3rem;
+    max-width: calc(2 * var(--content-width));
+  }
+}
+
 .wp-block-fis-custom-image-with-text .padder{
-  margin-top: 30vh;
+  margin-top: 80vh;
+  padding-top: 3rem;
+}
+.wp-block-fis-custom-image-with-text .padder .subtitle{
+  padding-bottom: 3rem;
+}
+.wp-block-fis-custom-image-with-text h2{
+  padding: 0;
 }

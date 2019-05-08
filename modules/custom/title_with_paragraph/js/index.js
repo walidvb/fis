@@ -49,7 +49,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       color: color
     };
     return React.createElement("div", {
-      className: [className, fullWidth ? 'full-width' : 'box-centered'].join(' ')
+      className: [className, !fullWidth ? 'full-width' : 'box-centered'].join(' ')
     }, React.createElement("div", {
       style: style
     }, title, paragraph && React.createElement("p", {

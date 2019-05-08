@@ -4,20 +4,27 @@
 }
 
 .social-media-links--platforms li{
-  margin: 0 1rem;
-  font-size: .7rem;
+  margin: 0 .5rem;
+  font-size: .5rem;
 }
 .fa{
-  color: white;
+  color: var(--blue);
+  background-color: white;
+  padding: 5px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
 }
 
 header{
-  padding-bottom: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 #block-friends-international-suisse-main-menu{
   padding-left: calc(50% - var(--content-width));
   padding-right: calc(50% - var(--content-width));
+  background-color: var(--yellow);
 }
 
 #block-friends-international-suisse-main-menu .menu{
@@ -29,10 +36,10 @@ header{
   background-color: var(--yellow);
   padding: 5px 10px;
   display: inline-block;
-  transform: translateY(50%);
   text-decoration: none;
-  position: relative;
   font-weight: bold;
-  z-index: 5;
   color: var(--dark-blue);
+}
+#block-friends-international-suisse-main-menu a:hover{
+  text-decoration: underline;
 }

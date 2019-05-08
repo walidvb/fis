@@ -3,11 +3,66 @@ main{
 }
 
 header, footer{
-  background-color: var(--dark-blue);
+  background-color: var(--blue);
   padding: 1rem 5rem;
 }
 
-.wp-block-columns{
+.wp-block-columns, .wp-block-embed{
   padding-left: var(--padding);
   padding-right: var(--padding);
+}
+
+.wp-block-column:last-child{
+  margin-bottom: 0;
+}
+.wp-block-column, .wp-block-image figcaption{
+    text-align: justify;
+}
+  @media (min-width: 767px) {
+    .wp-block-column:nth-child(odd) {
+      margin-right: 10px; }
+    .wp-block-column:nth-child(even) {
+      margin-left: 10px; }
+    .wp-block-column:not(:first-child) {
+      margin-left: 10px; }
+    .wp-block-column:not(:last-child) {
+      margin-right: 10px; } }
+
+.radio{
+  padding-bottom: 2rem;
+}
+
+.field--name-body > p, .field--name-body > ul{
+   padding-left: var(--padding);
+   padding-right: var(--padding);
+}
+.field--name-body > h2 + p{
+  margin-top: -2rem;
+}
+.field--name-body > h2{
+  padding-top: 3rem;
+}
+.team-title, .field--name-body >h2{
+  padding-bottom: 3rem;
+}
+h2+h3{
+  padding-top: 0;
+  margin-top: -2rem;
+}
+h3{
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+}
+.has-background + .wp-block-fis-custom-image-with-text{
+  margin-top : 0;
+}
+.wp-block-fis-custom-image-with-text{
+  margin-top: 3rem;
+}
+.text-container:not(.padder){
+  padding: 2rem 0;
+}
+.donators{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }

@@ -6,32 +6,53 @@
   --red: #AA1144;
   --light-grey: #F0F1F2;
   
-  --content-width: 475px;
+  --content-width: 375px;
 
-  --padding: calc(50% - var(--content-width));
+  --padding: 15px;
 }
 
+@media (min-width: 767px){
+  :root{
+    --padding: calc(50% - var(--content-width));
+  }
+}
 
-.has-light-blue-background{
+.has-white-color{
+  color: white;
+}
+.has-blue-color{
+  color: var(--blue);
+}
+.has-dark-blue-color{
+  color: var(--dark-blue);
+}
+.has-light-blue-background-color{
   background-color: var(--light-blue);
 }
-.has-blue-background, .bg-blue{
+.has-blue-background-color{
   background-color: var(--blue);
+}
+.has-dark-blue-background-color{
+  background-color: var(--dark-blue);
 }
 
 
 html{
   color: var(--blue);
+  font-size: 18px;
 }
 body{
   line-height: 1.42;
   font-family: 'NeuzeitGro', Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 img, iframe{
   max-width: 100%;
   height: auto;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .bg-brand{

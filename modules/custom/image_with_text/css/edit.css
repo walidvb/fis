@@ -4,7 +4,10 @@
 
 .wp-block-fis-custom-image-with-text .padder{
   margin-top: 5rem;
-  max-width: 70ch;
+}
+
+.wp-block-fis-custom-image-with-text .text-container{
+  max-width: 80%;
 }
 
 .wp-block-fis-custom-image-with-text .cover-selector{
@@ -12,6 +15,6 @@
   padding: 5px;
   color: white;
   background: blueviolet;
-  bottom: 1rem;
+  top: 1rem;
   right: 1rem;
 }

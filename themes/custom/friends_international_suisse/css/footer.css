@@ -1,11 +1,25 @@
 footer{
     display: flex;
     justify-content: space-between;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 footer .menu a{
     color: white;
+    text-decoration: none;
+}
+footer .menu a:hover{
+  text-decoration: underline;
 }
 ul.menu a.is-active{
   color: white;
+}
+
+@media (min-width: 767px){
+  .region-footer-second-column{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
 }

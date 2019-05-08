@@ -12,7 +12,7 @@
     const { backgroundColor, color, fullWidth } = attributes;
     const style = { backgroundColor, color };
     return (
-      <div className={[className, fullWidth ? 'full-width' : 'box-centered'].join(' ')} >
+      <div className={[className, !fullWidth ? 'full-width' : 'box-centered'].join(' ')} >
         <div style={style}>
           {title}
           {paragraph && (<p className="paragraph">{paragraph}</p>)}
