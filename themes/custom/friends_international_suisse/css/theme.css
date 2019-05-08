@@ -104,3 +104,14 @@ ul li{
     transform: translateX(calc(-1rem - .5rem));
   }
 }
+
+.donate-button{
+    position: absolute;
+    bottom: 0;
+    background-color: var(--red);
+    color: white;
+    padding: 10px 10px;
+    text-decoration: none;
+    right: 3rem;
+    font-weight: bold;
+}

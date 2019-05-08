@@ -1,5 +1,17 @@
 <?php
 
+use Drupal\image\Entity\ImageStyle;
+
+function donate_nid(){ 
+  return 18;
+}
+
+function donate_button($as_button){
+  $classes = $as_button ? 'donate-button' : '';
+  $donate_path = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.donate_nid());
+  $donate_text = t('Faites un don');
+  return "<a href='$donate_path' class='$classes'>$donate_text</a>";
+}
 /**
  * @file
  * Functions to support theming in the friends_international_suisse theme.
@@ -38,7 +50,7 @@ function friends_international_suisse_page_attachments_alter(array &$page) {
  * Implements hook_preprocess_page() for page.html.twig.
  */
 function friends_international_suisse_preprocess_page(array &$variables) {
-
+  $variables['donate_button'] = donate_button(false);
 }
 
 /**
@@ -91,6 +103,21 @@ function friends_international_suisse_theme_suggestions_fieldset_alter(array &$s
 function friends_international_suisse_preprocess_node(array &$variables) {
   // Default to turning off byline/submitted.
   //$variables['display_submitted'] = FALSE;
+  $node = $variables['node'];
+  $nid = $node->id();
+  $variables['nid'] = $nid;
+  if($node->getType() == 'page' && $node->field_image->entity){
+    $styled_image_url = ImageStyle::load('full_width')->buildUrl($node->field_image->entity->getFileUri());
+    $styled_image_url_mobile = ImageStyle::load('full_width')->buildUrl($node->field_image->entity->getFileUri());
+    $variables['image_mobile'] = $styled_image_url_mobile;
+    $variables['image'] = $styled_image_url;
+
+    if( $nid != donate_nid() ){
+      $variables['donate_button'] = donate_button(true);
+    }
+
+    unset($variables['content']['field_image']);
+  }
 }
 
 /**

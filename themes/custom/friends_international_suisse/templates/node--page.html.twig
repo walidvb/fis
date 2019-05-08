@@ -85,6 +85,25 @@
 
   {{ title_prefix }}
   {{ title_suffix }}
+  {% if image %}
+    <div id="cover-{{nid}}" class="stand-alone cover-image">
+    
+    {% if donate_button %}
+      
+    {% endif %}
+
+    </div>
+    <style>
+      #cover-{{nid}}{
+        background-image: url("{{ image_mobile }}");
+      }
+      @media (min-width: 767px){
+        #cover-{{nid}}{
+          background-image: url("{{ image }}");
+        }
+      }
+    </style>
+  {% endif %}
   <div{{content_attributes.addClass('node__content')}}>
     {{ content }}
   </div>
