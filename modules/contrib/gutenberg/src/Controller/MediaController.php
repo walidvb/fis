@@ -102,7 +102,9 @@ class MediaController extends ControllerBase {
     //      Better error handling?
     if (file_prepare_directory($directory, FILE_CREATE_DIRECTORY)) {
       $file = file_save_data($data, "{$directory}/{$filename}", FILE_EXISTS_RENAME);
-      $file->setTemporary();
+      // $file->setTemporary();
+      $file_usage = \Drupal::service('file.usage');
+      $file_usage->add($file, 'gutenberg', 'node', 18);
       $file->save();
     }
     else {
