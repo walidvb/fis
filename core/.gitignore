@@ -19,4 +19,3 @@ nightwatch.settings.json
 
 # Ignore dotenv
 .env
-drupal8.dev
