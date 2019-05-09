@@ -45,7 +45,7 @@
 <div class="layout-container">
 
   <header role="banner">
-    <div class="flex justify-between">
+    <div class="sm:flex justify-between">
       {{ page.header_first_column }}
       {{ page.header_second_column }}
       {{ page.header_third_column }}
@@ -82,10 +82,13 @@
 
   </main>
 
-  <footer class="flex justify-between" role="contentinfo">
+  <footer class="sm:flex justify-between" role="contentinfo">
     {{ page.footer_first_column }}
     {{ page.footer_second_column }}
-    {{ page.footer_third_column }}
+    <div class="footer-third-wrapper">
+      {{ donate_button }} 
+      {{ page.footer_third_column }}
+    </div>
   </footer>
 
 </div>{# /.layout-container #}

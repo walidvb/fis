@@ -6,11 +6,12 @@ function donate_nid(){
   return 18;
 }
 
-function donate_button($as_button){
-  $classes = $as_button ? 'donate-button' : '';
+function donate_button($text, $as_button){
+  $classes = $as_button ? 'donate-button' : 'donate-link';
   $donate_path = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.donate_nid());
-  $donate_text = t('Faites un don');
-  return "<a href='$donate_path' class='$classes'>$donate_text</a>";
+  return array(
+    '#markup' => "<a href='$donate_path' class='$classes'>$text</a>"
+  );
 }
 /**
  * @file
@@ -50,7 +51,7 @@ function friends_international_suisse_page_attachments_alter(array &$page) {
  * Implements hook_preprocess_page() for page.html.twig.
  */
 function friends_international_suisse_preprocess_page(array &$variables) {
-  $variables['donate_button'] = donate_button(false);
+  $variables['donate_button'] = donate_button(t('Faites un don'),false);
 }
 
 /**
@@ -109,11 +110,12 @@ function friends_international_suisse_preprocess_node(array &$variables) {
   if($node->getType() == 'page' && $node->field_image->entity){
     $styled_image_url = ImageStyle::load('full_width')->buildUrl($node->field_image->entity->getFileUri());
     $styled_image_url_mobile = ImageStyle::load('full_width')->buildUrl($node->field_image->entity->getFileUri());
-    $variables['image_mobile'] = $styled_image_url_mobile;
-    $variables['image'] = $styled_image_url;
+    $variables['image_mobile'] = parse_url($styled_image_url_mobile)['path'];
+    $variables['image'] = parse_url($styled_image_url)['path'];
 
     if( $nid != donate_nid() ){
-      $variables['donate_button'] = donate_button(true);
+      $donate_text = t('Faites un don');
+      $variables['donate_button'] = donate_button($donate_text, true);
     }
 
     unset($variables['content']['field_image']);

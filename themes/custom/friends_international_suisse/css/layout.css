@@ -4,7 +4,12 @@ main{
 
 header, footer{
   background-color: var(--blue);
-  padding: 1rem 5rem;
+      padding: 1rem 1rem;
+}
+@media (min-width:767px){
+  header, footer{
+    padding: 1rem 5rem;
+  }
 }
 
 .wp-block-columns, .wp-block-embed{

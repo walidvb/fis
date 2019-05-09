@@ -5,17 +5,19 @@ h2{
 .node-readmore a{
   color: white!important;
   background-color: var(--red);
-  padding: 5px 10px;
+  padding: 0px 10px;
   color: white;
-  display: inline-block
+  display: inline-block;
+  line-height: 2rem;
 }
 .node-readmore a:after{
   content: '>';
   border-left: 2px solid var(--light-grey);
-  height: 100%;
   display: inline-block;
-  margin-left: 5px;
-  padding-left: 5px;
+  margin-left: 8px;
+  padding-left: 8px;
+  font-size: 1.5rem;
+  vertical-align: middle;
 }
 
 ul li{
@@ -105,7 +107,7 @@ ul li{
   }
 }
 
-.donate-button{
+a.donate-button{
     position: absolute;
     bottom: 0;
     background-color: var(--red);
@@ -114,4 +116,15 @@ ul li{
     text-decoration: none;
     right: 3rem;
     font-weight: bold;
+}
+
+a.donate-link{
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  margin-bottom:  0.5rem;
+  text-decoration: none;
+  font-size: 1rem;
 }
