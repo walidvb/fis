@@ -124,11 +124,6 @@ function friends_international_suisse_preprocess_node(array &$variables) {
 
     unset($variables['content']['field_image']);
   }
-  if($is_article){
-    $url = $node->field_e[0]->uri;
-    kint($variables['content']);
-    $variables['external_link'] = $url;
-  }
 }
 
 /**
