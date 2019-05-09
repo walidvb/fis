@@ -4,7 +4,7 @@ footer{
     justify-content: space-between;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    font-size: .8rem;
+    font-size: 1rem;
 }
 @media (max-width:766px){
   ul.social-media-links--platforms{

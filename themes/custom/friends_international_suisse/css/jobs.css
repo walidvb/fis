@@ -1,0 +1,12 @@
+.view-jobs-listing{
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: var(--light-blue);
+}
+
+.view-jobs-listing .views-table{
+    width: 100%;
+    text-align: left;   
+}

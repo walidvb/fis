@@ -12,6 +12,6 @@
     var associatedBio = $(biosSelector).filter((i, e) => $(e).find('[data-nid="' + nid + '"]').length)
 
     $(namesSelector + ', ' +  biosSelector).removeClass('active');
-    $(associatedBio).add($clicked).addClass('active')
-  })
+    $(associatedBio).add($clicked).addClass('active');
+  });
 })(jQuery)

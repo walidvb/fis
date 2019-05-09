@@ -2,6 +2,7 @@
     .map{
         padding-left: var(--padding);
         padding-right: var(--padding);
+        filter: grayscale(100%);
     }
 }
 .map iframe{

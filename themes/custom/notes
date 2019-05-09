@@ -1,3 +1,7 @@
+rsync ./ fis:web/cms/  --exclude settings.php --exclude .git
+
+
+
  - bio Michael est la même que Huda
  - alignement?? Il y a plusieurs alignements différents, c'est voulu?
   - https://cl.ly/ed24c640c94b
@@ -9,3 +13,9 @@
  - Les projets en fenêtre modales, ça peut marcher, mais: 
   - pas idéal pour le SEO
   - comment on fait pour les liens dans le footer? 
+
+
+
+
+  - liens presse en rouge
+  - choisir pingpong

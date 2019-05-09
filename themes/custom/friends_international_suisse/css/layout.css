@@ -21,7 +21,7 @@ header, footer{
   margin-bottom: 0;
 }
 .wp-block-column, .wp-block-image figcaption{
-    text-align: justify;
+    /* text-align: justify; */
 }
   @media (min-width: 767px) {
     .wp-block-column:nth-child(odd) {
